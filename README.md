@@ -1,14 +1,14 @@
-## Live Demo
-
-The website is available via CloudFront:
-
-https://d3nyo2knndb3j8.cloudfront.net
-
 # AWS Static Website Lab
 
 This repository documents a hands-on AWS lab for hosting a static website using Amazon S3 and Amazon CloudFront.
 
 The goal of this lab is to practice basic cloud infrastructure concepts, including static asset hosting, CDN delivery, private S3 bucket access, and CloudFront cache invalidation.
+
+## Live Demo
+
+The website is available via CloudFront:
+
+https://d3nyo2knndb3j8.cloudfront.net
 
 ## Project Overview
 
