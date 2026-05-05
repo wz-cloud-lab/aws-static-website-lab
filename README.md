@@ -16,6 +16,16 @@ This project deploys a simple static website for an international student guide.
 
 The S3 bucket is not publicly accessible. CloudFront is configured to access the bucket securely through Origin Access Control.
 
+## Security Design
+
+- S3 bucket is configured with Block Public Access enabled
+- No public access to S3 objects via direct URL
+- CloudFront is the only entry point to access content
+- Origin Access Control (OAC) is used to securely connect CloudFront to S3
+- Bucket policy restricts access to a specific CloudFront distribution
+
+This ensures that content is not directly exposed through S3 and must be accessed through the CDN layer.
+
 ## Architecture
 
 ```text
@@ -26,13 +36,3 @@ Amazon CloudFront (CDN)
 Amazon S3 (Private Bucket)
     ↓
 Static Website Files (HTML, CSS)
-
-## Security Design
-
-- S3 bucket is configured with Block Public Access enabled
-- No public access to S3 objects via direct URL
-- CloudFront is the only entry point to access content
-- Origin Access Control (OAC) is used to securely connect CloudFront to S3
-- Bucket policy restricts access to a specific CloudFront distribution
-
-This ensures that content is not directly exposed through S3 and must be accessed through the CDN layer.
