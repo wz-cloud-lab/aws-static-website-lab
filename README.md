@@ -19,10 +19,20 @@ The S3 bucket is not publicly accessible. CloudFront is configured to access the
 ## Architecture
 
 ```text
-User Browser
+User (Browser)
     ↓ HTTPS
-Amazon CloudFront
-    ↓ Origin Access Control
-Private Amazon S3 Bucket
+Amazon CloudFront (CDN)
+    ↓ Origin Access Control (OAC)
+Amazon S3 (Private Bucket)
     ↓
-index.html / style.css
+Static Website Files (HTML, CSS)
+
+## Security Design
+
+- S3 bucket is configured with Block Public Access enabled
+- No public access to S3 objects via direct URL
+- CloudFront is the only entry point to access content
+- Origin Access Control (OAC) is used to securely connect CloudFront to S3
+- Bucket policy restricts access to a specific CloudFront distribution
+
+This ensures that content is not directly exposed through S3 and must be accessed through the CDN layer.
